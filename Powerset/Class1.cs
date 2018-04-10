@@ -100,7 +100,7 @@ namespace Powerset
                         var source = acc[j];
                         var destination = new HashSet<T>(source);
                         destination.Add(current);
-
+                        acc[count + j] = destination;
                         totalCount += source.Count;
                     }
                     
@@ -151,6 +151,7 @@ namespace Powerset
 
             RunAlgorithm(iterations, input, Iterative.PowerSet, "Iterative");
             RunAlgorithm(iterations, input, LoopdeLoop.FastPowerSet, "FastPowerSet");
+            RunAlgorithm(iterations, input, FastSeq.PowerSet, "FastSeq");
         }
 
         private static void RunAlgorithm(int iterations, HashSet<int> input, Func<ISet<int>, IEnumerable<ISet<int>>> powerSet, string type)
